@@ -102,16 +102,15 @@
           const card = document.createElement("div");
           card.className = "app-card";
 
-          card.innerHTML = `
-            <img src="${app.icon_url}" alt="icon" onerror="this.src='https://via.placeholder.com/80'"/>
-            <div class="app-info">
-              <h2>${app.name}</h2>
-              <a href="${app.package_url}" target="_blank">🔄 Арендовать</a>
-              <a href="#">🧪 Протестировать нейминг</a>
-              <a href="#">📊 Просмотреть кабинеты</a>
+         card.innerHTML = `
+  <img src="${app.icon_url}" alt="icon" onerror="this.src='https://via.placeholder.com/80'"/>
+  <div class="app-info">
+    <h2>${app.name}</h2>
+    <a href="${app.package_url}" target="_blank">🌐 Google Play</a>
+    <a href="#">🤝 Арендовать</a>
+  </div>
+`;
 
-            </div>
-          `;
 
           container.appendChild(card);
         })
