@@ -71,8 +71,17 @@
   <div class="footer">© 2025 App Rental System</div>
 
   <script>
-    // Подгрузка списка приложений из конфигурационного файла
     const apps = [
+      {
+        name: "Sweet Tasker",
+        config: "./sweet_tasker/kb.json",
+        link: "https://play.google.com/store/apps/details?id=fortune.tasker.sweet.fate"
+      },
+      {
+        name: "Word Orbs",
+        config: "./word_orbs/kb.json",
+        link: "https://play.google.com/store/apps/details?id=educate.word.orbs.play"
+      },
       {
         name: "Sweet Casino",
         config: "./sweet_casino/kb.json",
@@ -83,7 +92,6 @@
         config: "./crypto_clicker/kb.json",
         link: "./crypto_clicker/"
       }
-      // Добавляй сюда новые приложения по аналогии
     ];
 
     const container = document.getElementById("appList");
@@ -94,7 +102,7 @@
 
       card.innerHTML = `
         <h2>${app.name}</h2>
-        <a href="${app.link}" target="_blank">🌐 Mini App</a>
+        <a href="${app.link}" target="_blank">🌐 Open</a>
         <a href="${app.config}" target="_blank">📄 Config</a>
       `;
 
