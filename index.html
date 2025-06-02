@@ -22,7 +22,7 @@
       flex-direction: column;
       align-items: center;
       gap: 20px;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
@@ -33,14 +33,29 @@
       padding: 20px;
       width: 100%;
       box-sizing: border-box;
+      display: flex;
+      align-items: center;
     }
 
-    .app-card h2 {
-      margin-top: 0;
+    .app-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 20px;
+      background-color: #eee;
+    }
+
+    .app-info {
+      flex: 1;
+    }
+
+    .app-info h2 {
+      margin: 0 0 10px;
       font-size: 20px;
     }
 
-    .app-card a {
+    .app-info a {
       display: inline-block;
       margin-right: 10px;
       color: #007bff;
@@ -48,7 +63,7 @@
       font-weight: bold;
     }
 
-    .app-card a:hover {
+    .app-info a:hover {
       text-decoration: underline;
     }
 
@@ -65,7 +80,7 @@
   <h1>📱 App Dashboard</h1>
 
   <div class="app-list" id="appList">
-    <!-- Cards will load here -->
+    <!-- App cards here -->
   </div>
 
   <div class="footer">© 2025 App Rental System</div>
@@ -74,21 +89,25 @@
     const apps = [
       {
         name: "Sweet Tasker",
+        folder: "sweet_tasker",
         config: "./sweet_tasker/kb.json",
         link: "https://play.google.com/store/apps/details?id=fortune.tasker.sweet.fate"
       },
       {
         name: "Word Orbs",
+        folder: "word_orbs",
         config: "./word_orbs/kb.json",
         link: "https://play.google.com/store/apps/details?id=educate.word.orbs.play"
       },
       {
         name: "Sweet Casino",
+        folder: "sweet_casino",
         config: "./sweet_casino/kb.json",
         link: "./sweet_casino/"
       },
       {
         name: "Crypto Clicker",
+        folder: "crypto_clicker",
         config: "./crypto_clicker/kb.json",
         link: "./crypto_clicker/"
       }
@@ -101,9 +120,12 @@
       card.className = "app-card";
 
       card.innerHTML = `
-        <h2>${app.name}</h2>
-        <a href="${app.link}" target="_blank">🌐 Open</a>
-        <a href="${app.config}" target="_blank">📄 Config</a>
+        <img src="./${app.folder}/icon.png" alt="icon" onerror="this.src='https://via.placeholder.com/80'"/>
+        <div class="app-info">
+          <h2>${app.name}</h2>
+          <a href="${app.link}" target="_blank">🌐 Open</a>
+          <a href="${app.config}" target="_blank">📄 Config</a>
+        </div>
       `;
 
       container.appendChild(card);
