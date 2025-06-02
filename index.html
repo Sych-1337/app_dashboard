@@ -1,5 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head><title>App Dashboard</title></head>
-  <body><h1>App Dashboard работает!</h1></body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .app-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .app-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .app-card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .app-card a {
+      display: inline-block;
+      margin-right: 10px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .app-card a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📱 App Dashboard</h1>
+
+  <div class="app-list" id="appList">
+    <!-- Cards will load here -->
+  </div>
+
+  <div class="footer">© 2025 App Rental System</div>
+
+  <script>
+    // Подгрузка списка приложений из конфигурационного файла
+    const apps = [
+      {
+        name: "Sweet Casino",
+        config: "./sweet_casino/kb.json",
+        link: "./sweet_casino/"
+      },
+      {
+        name: "Crypto Clicker",
+        config: "./crypto_clicker/kb.json",
+        link: "./crypto_clicker/"
+      }
+      // Добавляй сюда новые приложения по аналогии
+    ];
+
+    const container = document.getElementById("appList");
+
+    apps.forEach(app => {
+      const card = document.createElement("div");
+      card.className = "app-card";
+
+      card.innerHTML = `
+        <h2>${app.name}</h2>
+        <a href="${app.link}" target="_blank">🌐 Mini App</a>
+        <a href="${app.config}" target="_blank">📄 Config</a>
+      `;
+
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
 </html>
