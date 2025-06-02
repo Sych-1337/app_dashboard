@@ -86,49 +86,36 @@
   <div class="footer">© 2025 App Rental System</div>
 
   <script>
-    const apps = [
-      {
-        name: "Sweet Tasker",
-        folder: "sweet_tasker",
-        config: "./sweet_tasker/kb.json",
-        link: "https://play.google.com/store/apps/details?id=fortune.tasker.sweet.fate"
-      },
-      {
-        name: "Word Orbs",
-        folder: "word_orbs",
-        config: "./word_orbs/kb.json",
-        link: "https://play.google.com/store/apps/details?id=educate.word.orbs.play"
-      },
-      {
-        name: "Sweet Casino",
-        folder: "sweet_casino",
-        config: "./sweet_casino/kb.json",
-        link: "./sweet_casino/"
-      },
-      {
-        name: "Crypto Clicker",
-        folder: "crypto_clicker",
-        config: "./crypto_clicker/kb.json",
-        link: "./crypto_clicker/"
-      }
+    const jsonFiles = [
+      "apps/sweet_tasker.json",
+      "apps/word_orbs.json",
+      "apps/sweet_casino.json",
+      "apps/crypto_clicker.json"
     ];
 
     const container = document.getElementById("appList");
 
-    apps.forEach(app => {
-      const card = document.createElement("div");
-      card.className = "app-card";
+    jsonFiles.forEach(file => {
+      fetch(file)
+        .then(res => res.json())
+        .then(app => {
+          const card = document.createElement("div");
+          card.className = "app-card";
 
-      card.innerHTML = `
-        <img src="./${app.folder}/icon.png" alt="icon" onerror="this.src='https://via.placeholder.com/80'"/>
-        <div class="app-info">
-          <h2>${app.name}</h2>
-          <a href="${app.link}" target="_blank">🌐 Open</a>
-          <a href="${app.config}" target="_blank">📄 Config</a>
-        </div>
-      `;
+          card.innerHTML = `
+            <img src="${app.icon_url}" alt="icon" onerror="this.src='https://via.placeholder.com/80'"/>
+            <div class="app-info">
+              <h2>${app.name}</h2>
+              <a href="${app.package_url}" target="_blank">🌐 Open</a>
+              <a href="${app.config_url}" target="_blank">📄 Config</a>
+            </div>
+          `;
 
-      container.appendChild(card);
+          container.appendChild(card);
+        })
+        .catch(err => {
+          console.error("Ошибка загрузки:", file, err);
+        });
     });
   </script>
 
